@@ -1,0 +1,42 @@
+### Number 896: monotonic array
+### Pattern: Array
+### Complexity: O(1) best, O(n) worst, O(n) average time
+### REVIEW: MUST BE A CLEANER SOLUTION
+
+class Solution:
+    def isMonotonic(self, nums: List[int]) -> bool:
+        #edge case
+        if len(nums) == 1:
+            return True
+
+        #figure out if it is increasing or decreasing from beginning to end
+        #note: if it is neither, then all items must be the same and it will pass the later comparisions
+        inc = False
+        if nums[-1] - nums[0] > 0:
+            inc = True
+        
+        #if increasing, then look for any non monotonically increasing terms
+        if inc == True:
+            for index, i in enumerate(nums):
+                if index == 0:
+                    pass
+                else:
+                    if nums[index-1] > i:
+                        return False
+
+        #similarly. if dec, then look for any non-monotonic decreasing values
+        else:
+            for index, i in enumerate(nums):
+                if index == 0:
+                    pass
+                else:
+                    if nums[index-1] < i:
+                        return False
+        
+        return True
+
+
+
+            
+                
+        
