@@ -1,0 +1,30 @@
+
+### Number 49: Group Anagrams
+### Pattern(s): HASH
+### REVIEW
+
+class Solution:
+    import collections
+    
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+
+        #init result list
+        result = []
+
+        #init default dict for hashing
+        anagrams_map = collections.defaultdict(list)
+
+        #iterate over each member of the input array and assign it to the corresponding key of the hash map.
+        #keys are the sorted version of each word.
+        for string in strs:
+            anagrams_map[tuple(sorted(string))].append(string)
+        
+        #add values to result
+        for value in anagrams_map.values():
+            result.append(value)
+
+        #return
+        return result
+
+
+        
